@@ -35,6 +35,19 @@ abstract class TestCase extends Orchestra
     }
 
     /**
+     * Load package service provider.
+     *
+     * @param  \Illuminate\Foundation\Application $app
+     * @return array
+     */
+    protected function getPackageProviders($app)
+    {
+        return [
+            \Hkp22\Laravel\Bannable\BannableServiceProvider::class,
+        ];
+    }
+
+    /**
      * Set default user model used by tests.
      *
      * @param $app
