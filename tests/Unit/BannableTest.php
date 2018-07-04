@@ -65,6 +65,7 @@ class BannableTest extends TestCase
             'bannable_type' => $user->getMorphClass(),
         ]);
 
+        $this->assertNotNull($user->banned_at);
         $this->assertCount(1, $user->bans);
 
         $user->unban();
