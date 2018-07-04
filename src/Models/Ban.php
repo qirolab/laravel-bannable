@@ -66,4 +66,18 @@ class Ban extends Model
     {
         return $this->morphTo('bannable');
     }
+
+    /**
+     * Delete all expired Ban models.
+     *
+     * @return void
+     */
+    public static function deleteExpired()
+    {
+        $bans = Ban::where('expired_at', '<=', Carbon::now()->format('Y-m-d H:i:s'))->get();
+
+        $bans->each(function ($ban) {
+            $ban->delete();
+        });
+    }
 }
