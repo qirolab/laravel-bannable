@@ -7,7 +7,7 @@ use Hkp22\Laravel\Bannable\Models\Ban;
 use Hkp22\Tests\Laravel\Bannable\TestCase;
 use Hkp22\Tests\Laravel\Bannable\Stubs\Models\User;
 
-class BanTest extends TestCase
+class BanModelTest extends TestCase
 {
     /** @test */
     public function comment_can_be_filled_and_no_MassAssignmentException_error()
