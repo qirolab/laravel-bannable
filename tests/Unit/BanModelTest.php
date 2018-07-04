@@ -81,4 +81,20 @@ class BanTest extends TestCase
 
         $this->assertInstanceOf(User::class, $ban->bannable);
     }
+
+    /** @test */
+    public function it_can_delete_all_expired_bans()
+    {
+        factory(Ban::class, 3)->create([
+            'expired_at' => Carbon::now()->subMonth(),
+        ]);
+
+        factory(Ban::class, 4)->create([
+            'expired_at' => Carbon::now()->addMonth(),
+        ]);
+
+        Ban::deleteExpired();
+
+        $this->assertCount(4, Ban::all());
+    }
 }
