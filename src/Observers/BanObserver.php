@@ -3,6 +3,8 @@
 namespace Hkp22\Laravel\Bannable\Observers;
 
 use Hkp22\Laravel\Bannable\Models\Ban;
+use Hkp22\Laravel\Bannable\Events\ModelWasBanned;
+use Hkp22\Laravel\Bannable\Events\ModelWasUnbanned;
 
 class BanObserver
 {
@@ -35,6 +37,8 @@ class BanObserver
         $bannable = $ban->bannable;
 
         $bannable->setBannedFlag($ban->created_at)->save();
+
+        event(new ModelWasBanned($bannable, $ban));
     }
 
     /**
@@ -49,6 +53,8 @@ class BanObserver
 
         if ($bannable->bans->count() === 0) {
             $bannable->unsetBannedFlag()->save();
+
+            event(new ModelWasUnbanned($bannable));
         }
     }
 }
