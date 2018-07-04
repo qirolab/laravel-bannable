@@ -4,6 +4,7 @@ namespace Hkp22\Laravel\Bannable\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Hkp22\Laravel\Bannable\Scopes\BannedModelScope;
 
@@ -80,5 +81,20 @@ class Ban extends Model
         $bans->each(function ($ban) {
             $ban->delete();
         });
+    }
+
+    /**
+     * Scope a query to only include models by owner.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  Model                                 $bannable
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWhereBannable(Builder $query, Model $bannable)
+    {
+        return $query->where([
+            'bannable_id' => $bannable->getKey(),
+            'bannable_type' => $bannable->getMorphClass(),
+        ]);
     }
 }

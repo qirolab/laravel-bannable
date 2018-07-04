@@ -97,4 +97,28 @@ class BanModelTest extends TestCase
 
         $this->assertCount(4, Ban::all());
     }
+
+    /** @test */
+    public function it_can_scope_bannable_models()
+    {
+        $user1 = factory(User::class)->create();
+
+        factory(Ban::class, 4)->create([
+            'bannable_id' => $user1->getKey(),
+            'bannable_type' => $user1->getMorphClass(),
+        ]);
+
+        $user2 = factory(User::class)->create();
+
+        factory(Ban::class, 2)->create([
+            'bannable_id' => $user2->getKey(),
+            'bannable_type' => $user2->getMorphClass(),
+        ]);
+
+        $bannableModels = Ban::whereBannable($user1)->get();
+        $this->assertCount(4, $bannableModels);
+
+        $bannableModels = Ban::whereBannable($user2)->get();
+        $this->assertCount(2, $bannableModels);
+    }
 }
