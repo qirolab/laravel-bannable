@@ -5,6 +5,7 @@ namespace Hkp22\Laravel\Bannable\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Hkp22\Laravel\Bannable\Scopes\BannedModelScope;
 
 class Ban extends Model
 {
@@ -64,7 +65,7 @@ class Ban extends Model
      */
     public function bannable()
     {
-        return $this->morphTo('bannable');
+        return $this->morphTo('bannable')->withoutGlobalScope(BannedModelScope::class);
     }
 
     /**

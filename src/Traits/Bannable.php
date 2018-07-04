@@ -7,6 +7,8 @@ use Hkp22\Laravel\Bannable\Models\Ban;
 
 trait Bannable
 {
+    use HasBannedModelScope;
+
     /**
      * Entity Bans.
      *
