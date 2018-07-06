@@ -3,22 +3,22 @@
 namespace Hkp22\Laravel\Bannable\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\Factory as Auth;
 use Hkp22\Laravel\Bannable\Exceptions\BannableTraitNotUsed;
 
 class ForbidBannedUser
 {
     /**
-     * The Guard implementation.
+     * The Auth implementation.
      *
-     * @var \Illuminate\Contracts\Auth\Guard
+     * @var \Illuminate\Contracts\Auth\Factory
      */
     protected $auth;
 
     /**
-     * @param \Illuminate\Contracts\Auth\Guard $auth
+     * @param \Illuminate\Contracts\Auth\Factory $auth
      */
-    public function __construct(Guard $auth)
+    public function __construct(Auth $auth)
     {
         $this->auth = $auth;
     }
