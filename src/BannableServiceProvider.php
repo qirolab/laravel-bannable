@@ -5,6 +5,7 @@ namespace Hkp22\Laravel\Bannable;
 use Hkp22\Laravel\Bannable\Models\Ban;
 use Illuminate\Support\ServiceProvider;
 use Hkp22\Laravel\Bannable\Observers\BanObserver;
+use Hkp22\Laravel\Bannable\Middleware\ForbidBannedUser;
 
 class BannableServiceProvider extends ServiceProvider
 {
@@ -27,6 +28,7 @@ class BannableServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerMiddleware();
     }
 
     /**
@@ -55,5 +57,15 @@ class BannableServiceProvider extends ServiceProvider
     protected function registerObservers()
     {
         $this->app->make(Ban::class)->observe(new BanObserver);
+    }
+
+    /**
+     * Register middleware.
+     *
+     * @return void
+     */
+    protected function registerMiddleware()
+    {
+        $this->app['router']->aliasMiddleware('forbidBannedUser', ForbidBannedUser::class);
     }
 }
