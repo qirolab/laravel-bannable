@@ -6,7 +6,7 @@
     "authors": [
         {
             "name": "Harish Kumar",
-            "email": "harish.pra22@gmail.com"
+            "email": "harishpra22@gmail.com"
         }
     ],
     "require": {
@@ -31,5 +31,17 @@
         "psr-4": {
             "Hkp22\\Tests\\Laravel\\Bannable\\": "tests/"
         }
-    }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hkp22\\Laravel\\Bannable\\BannableServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable" : true
 }
