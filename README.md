@@ -25,7 +25,6 @@ For Laravel 5.4 or earlier releases version include the service provider within 
 Now need to add nullable `banned_at` timestamp column to model. So, create a new migration file.
 
 ```bash
-Create a new migration file
 php artisan make:migration add_banned_at_column_to_users_table
 ```
 
@@ -96,7 +95,7 @@ $user->ban([
     'expired_at' => '2086-03-28 00:00:00',
 ]);
 ```
-Or
+or
 
 ```php
 $user->ban([
