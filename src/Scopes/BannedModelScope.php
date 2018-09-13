@@ -2,9 +2,9 @@
 
 namespace Hkp22\Laravel\Bannable\Scopes;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 class BannedModelScope implements Scope
 {

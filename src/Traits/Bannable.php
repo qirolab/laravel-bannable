@@ -83,6 +83,6 @@ trait Bannable
      */
     public function isNotBanned()
     {
-        return !$this->isBanned();
+        return ! $this->isBanned();
     }
 }

@@ -22,7 +22,8 @@ class BanMiddlewareTest extends TestCase
 
         $middleware = new ForbidBannedUser(auth());
 
-        $response = $middleware->handle($request, function () {});
+        $response = $middleware->handle($request, function () {
+        });
 
         $this->assertEquals($response->getStatusCode(), 302);
     }
@@ -38,7 +39,8 @@ class BanMiddlewareTest extends TestCase
 
         $middleware = new ForbidBannedUser(auth());
 
-        $response = $middleware->handle($request, function () {});
+        $response = $middleware->handle($request, function () {
+        });
 
         $this->assertEquals($response, null);
     }

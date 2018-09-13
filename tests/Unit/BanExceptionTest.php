@@ -23,6 +23,7 @@ class BanExceptionTest extends TestCase
 
         $middleware = new ForbidBannedUser(auth());
 
-        $response = $middleware->handle($request, function () {});
+        $response = $middleware->handle($request, function () {
+        });
     }
 }

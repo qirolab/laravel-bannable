@@ -32,14 +32,14 @@ class BannableServiceProvider extends ServiceProvider
     }
 
     /**
-    * Setup the resource publishing groups for Ban.
-    *
-    * @return void
-    */
+     * Setup the resource publishing groups for Ban.
+     *
+     * @return void
+     */
     protected function loadMigrations()
     {
         if ($this->app->runningInConsole()) {
-            $migrationsPath = __DIR__ . '/../migrations';
+            $migrationsPath = __DIR__.'/../migrations';
 
             $this->publishes([
                 $migrationsPath => database_path('migrations'),

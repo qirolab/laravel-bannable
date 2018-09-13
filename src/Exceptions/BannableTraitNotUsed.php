@@ -12,7 +12,7 @@ class BannableTraitNotUsed extends Exception
         $class = '';
 
         if ($message && $message instanceof Model) {
-            $class = "'" . get_class($message) . "'";
+            $class = "'".get_class($message)."'";
         }
 
         $message = "'Hkp22\Laravel\Bannable\Traits\Bannable' trait is not used in {$class} model.";
