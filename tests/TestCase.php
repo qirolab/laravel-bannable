@@ -48,7 +48,7 @@ abstract class TestCase extends Orchestra
      */
     protected function destroyPackageMigrations()
     {
-        File::cleanDirectory(__DIR__ . '/../vendor/orchestra/testbench-core/laravel/database/migrations');
+        File::cleanDirectory(__DIR__.'/../vendor/orchestra/testbench-core/laravel/database/migrations');
     }
 
     /**
@@ -106,7 +106,7 @@ abstract class TestCase extends Orchestra
     protected function migrateUnitTestTables()
     {
         $this->loadMigrationsFrom([
-            '--realpath' => realpath(__DIR__ . '/database/migrations'),
+            '--realpath' => realpath(__DIR__.'/database/migrations'),
         ]);
     }
 
@@ -117,7 +117,7 @@ abstract class TestCase extends Orchestra
      */
     private function registerPackageFactories()
     {
-        $pathToFactories = realpath(__DIR__ . '/database/factories');
+        $pathToFactories = realpath(__DIR__.'/database/factories');
 
         $this->withFactories($pathToFactories);
     }
