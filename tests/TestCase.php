@@ -2,6 +2,7 @@
 
 namespace Hkp22\Tests\Laravel\Bannable;
 
+use Illuminate\Support\Facades\File;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Hkp22\Tests\Laravel\Bannable\Stubs\Models\User;
 
@@ -16,11 +17,38 @@ abstract class TestCase extends Orchestra
     {
         parent::setUp();
 
+        $this->destroyPackageMigrations();
+
+        $this->publishPackageMigrations();
+
         $this->migratePackageTables();
 
         $this->migrateUnitTestTables();
 
         $this->registerPackageFactories();
+    }
+
+    /**
+     * Publish package migrations.
+     *
+     * @return void
+     */
+    protected function publishPackageMigrations()
+    {
+        $this->artisan('vendor:publish', [
+            '--force' => '',
+            '--tag' => 'migrations',
+        ]);
+    }
+
+    /**
+     * Delete all published package migrations.
+     *
+     * @return void
+     */
+    protected function destroyPackageMigrations()
+    {
+        File::cleanDirectory(__DIR__ . '/../vendor/orchestra/testbench-core/laravel/database/migrations');
     }
 
     /**
@@ -78,7 +106,7 @@ abstract class TestCase extends Orchestra
     protected function migrateUnitTestTables()
     {
         $this->loadMigrationsFrom([
-            '--realpath' => realpath(__DIR__.'/database/migrations'),
+            '--realpath' => realpath(__DIR__ . '/database/migrations'),
         ]);
     }
 
@@ -89,7 +117,7 @@ abstract class TestCase extends Orchestra
      */
     private function registerPackageFactories()
     {
-        $pathToFactories = realpath(__DIR__.'/database/factories');
+        $pathToFactories = realpath(__DIR__ . '/database/factories');
 
         $this->withFactories($pathToFactories);
     }
