@@ -13,10 +13,10 @@ class Ban extends Model
     use SoftDeletes;
 
     /**
-    * The table associated with the model.
-    *
-    * @var string
-    */
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'bans';
 
     /**
@@ -42,7 +42,7 @@ class Ban extends Model
      */
     public function setExpiredAtAttribute($value)
     {
-        if (!$value instanceof Carbon) {
+        if (! $value instanceof Carbon) {
             $value = Carbon::parse($value);
         }
 
@@ -76,7 +76,7 @@ class Ban extends Model
      */
     public static function deleteExpired()
     {
-        $bans = Ban::where('expired_at', '<=', Carbon::now()->format('Y-m-d H:i:s'))->get();
+        $bans = self::where('expired_at', '<=', Carbon::now()->format('Y-m-d H:i:s'))->get();
 
         $bans->each(function ($ban) {
             $ban->delete();
