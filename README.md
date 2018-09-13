@@ -1,4 +1,4 @@
-# Laravel Bannable
+# Laravel Bannable [![GitHub release](https://img.shields.io/github/release/hkp22/laravel-bannable.svg?style=flat-square)](https://github.com/hkp22/laravel-bannable) [![Travis (.org)](https://img.shields.io/travis/hkp22/laravel-bannable.svg?style=flat-square)](https://github.com/hkp22/laravel-bannable) [![StyleCI](https://github.styleci.io/repos/140012721/shield?branch=master)](https://github.styleci.io/repos/140012721) [![GitHub](https://img.shields.io/github/license/hkp22/laravel-bannable.svg)](https://github.com/hkp22/laravel-bannable)
 
 Laravel bannable package for blocking and banning Eloquent models. Using this package any model can be made bannable such as Organizations, Teams, Groups, and others.
 
