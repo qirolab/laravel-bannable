@@ -2,8 +2,8 @@
 
 
 use Faker\Generator as Faker;
-use Hkp22\Laravel\Bannable\Models\Ban;
-use Hkp22\Tests\Laravel\Bannable\Stubs\Models\User;
+use Qirolab\Laravel\Bannable\Models\Ban;
+use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
 
 /*
  * @var \Illuminate\Database\Eloquent\Factory $factory

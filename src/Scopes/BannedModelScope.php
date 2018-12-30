@@ -1,6 +1,6 @@
 <?php
 
-namespace Hkp22\Laravel\Bannable\Scopes;
+namespace Qirolab\Laravel\Bannable\Scopes;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;

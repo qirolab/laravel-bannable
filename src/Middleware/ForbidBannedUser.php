@@ -1,10 +1,10 @@
 <?php
 
-namespace Hkp22\Laravel\Bannable\Middleware;
+namespace Qirolab\Laravel\Bannable\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;
-use Hkp22\Laravel\Bannable\Exceptions\BannableTraitNotUsed;
+use Qirolab\Laravel\Bannable\Exceptions\BannableTraitNotUsed;
 
 class ForbidBannedUser
 {

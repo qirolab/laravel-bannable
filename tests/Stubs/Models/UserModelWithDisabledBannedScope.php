@@ -1,6 +1,6 @@
 <?php
 
-namespace Hkp22\Tests\Laravel\Bannable\Stubs\Models;
+namespace Qirolab\Tests\Laravel\Bannable\Stubs\Models;
 
 class UserModelWithDisabledBannedScope extends User
 {

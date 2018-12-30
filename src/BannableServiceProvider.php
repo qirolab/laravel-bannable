@@ -1,11 +1,11 @@
 <?php
 
-namespace Hkp22\Laravel\Bannable;
+namespace Qirolab\Laravel\Bannable;
 
-use Hkp22\Laravel\Bannable\Models\Ban;
+use Qirolab\Laravel\Bannable\Models\Ban;
 use Illuminate\Support\ServiceProvider;
-use Hkp22\Laravel\Bannable\Observers\BanObserver;
-use Hkp22\Laravel\Bannable\Middleware\ForbidBannedUser;
+use Qirolab\Laravel\Bannable\Observers\BanObserver;
+use Qirolab\Laravel\Bannable\Middleware\ForbidBannedUser;
 
 class BannableServiceProvider extends ServiceProvider
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Hkp22\Tests\Laravel\Bannable;
+namespace Qirolab\Tests\Laravel\Bannable;
 
 use Illuminate\Support\Facades\File;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Hkp22\Tests\Laravel\Bannable\Stubs\Models\User;
+use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
 
 abstract class TestCase extends Orchestra
 {
@@ -71,7 +71,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \Hkp22\Laravel\Bannable\BannableServiceProvider::class,
+            \Qirolab\Laravel\Bannable\BannableServiceProvider::class,
         ];
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hkp22\Laravel\Bannable\Exceptions;
+namespace Qirolab\Laravel\Bannable\Exceptions;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;

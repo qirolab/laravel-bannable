@@ -1,8 +1,8 @@
 <?php
 
-namespace Hkp22\Laravel\Bannable\Events;
+namespace Qirolab\Laravel\Bannable\Events;
 
-use Hkp22\Laravel\Bannable\Models\Ban;
+use Qirolab\Laravel\Bannable\Models\Ban;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Queue\ShouldQueue;
 

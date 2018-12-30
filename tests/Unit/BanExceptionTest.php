@@ -1,12 +1,12 @@
 <?php
 
-namespace Hkp22\Tests\Laravel\Bannable\Unit;
+namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
 use Illuminate\Http\Request;
-use Hkp22\Tests\Laravel\Bannable\TestCase;
-use Hkp22\Laravel\Bannable\Middleware\ForbidBannedUser;
-use Hkp22\Laravel\Bannable\Exceptions\BannableTraitNotUsed;
-use Hkp22\Tests\Laravel\Bannable\Stubs\Models\UserWithoutBannableTrait;
+use Qirolab\Tests\Laravel\Bannable\TestCase;
+use Qirolab\Laravel\Bannable\Middleware\ForbidBannedUser;
+use Qirolab\Laravel\Bannable\Exceptions\BannableTraitNotUsed;
+use Qirolab\Tests\Laravel\Bannable\Stubs\Models\UserWithoutBannableTrait;
 
 class BanExceptionTest extends TestCase
 {

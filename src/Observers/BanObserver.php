@@ -1,10 +1,10 @@
 <?php
 
-namespace Hkp22\Laravel\Bannable\Observers;
+namespace Qirolab\Laravel\Bannable\Observers;
 
-use Hkp22\Laravel\Bannable\Models\Ban;
-use Hkp22\Laravel\Bannable\Events\ModelWasBanned;
-use Hkp22\Laravel\Bannable\Events\ModelWasUnbanned;
+use Qirolab\Laravel\Bannable\Models\Ban;
+use Qirolab\Laravel\Bannable\Events\ModelWasBanned;
+use Qirolab\Laravel\Bannable\Events\ModelWasUnbanned;
 
 class BanObserver
 {

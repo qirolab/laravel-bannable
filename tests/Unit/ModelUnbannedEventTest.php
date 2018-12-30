@@ -1,10 +1,10 @@
 <?php
 
-namespace Hkp22\Tests\Laravel\Bannable\Unit;
+namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
-use Hkp22\Laravel\Bannable\Models\Ban;
-use Hkp22\Tests\Laravel\Bannable\TestCase;
-use Hkp22\Laravel\Bannable\Events\ModelWasUnbanned;
+use Qirolab\Laravel\Bannable\Models\Ban;
+use Qirolab\Tests\Laravel\Bannable\TestCase;
+use Qirolab\Laravel\Bannable\Events\ModelWasUnbanned;
 
 class ModelUnbannedEventTest extends TestCase
 {

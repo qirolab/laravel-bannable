@@ -1,9 +1,9 @@
 <?php
 
-namespace Hkp22\Laravel\Bannable\Traits;
+namespace Qirolab\Laravel\Bannable\Traits;
 
 use Carbon\Carbon;
-use Hkp22\Laravel\Bannable\Models\Ban;
+use Qirolab\Laravel\Bannable\Models\Ban;
 
 trait Bannable
 {

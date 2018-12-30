@@ -1,11 +1,11 @@
 <?php
 
-namespace Hkp22\Tests\Laravel\Bannable\Unit;
+namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
 use Illuminate\Http\Request;
-use Hkp22\Tests\Laravel\Bannable\TestCase;
-use Hkp22\Tests\Laravel\Bannable\Stubs\Models\User;
-use Hkp22\Laravel\Bannable\Middleware\ForbidBannedUser;
+use Qirolab\Tests\Laravel\Bannable\TestCase;
+use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
+use Qirolab\Laravel\Bannable\Middleware\ForbidBannedUser;
 
 class BanMiddlewareTest extends TestCase
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Hkp22\Tests\Laravel\Bannable\Unit;
+namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
 use Carbon\Carbon;
-use Hkp22\Tests\Laravel\Bannable\TestCase;
-use Hkp22\Tests\Laravel\Bannable\Stubs\Models\User;
-use Hkp22\Tests\Laravel\Bannable\Stubs\Models\UserModelWithDisabledBannedScope;
+use Qirolab\Tests\Laravel\Bannable\TestCase;
+use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
+use Qirolab\Tests\Laravel\Bannable\Stubs\Models\UserModelWithDisabledBannedScope;
 
 class BannedScopeTest extends TestCase
 {

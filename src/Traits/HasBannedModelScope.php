@@ -1,8 +1,8 @@
 <?php
 
-namespace Hkp22\Laravel\Bannable\Traits;
+namespace Qirolab\Laravel\Bannable\Traits;
 
-use Hkp22\Laravel\Bannable\Scopes\BannedModelScope;
+use Qirolab\Laravel\Bannable\Scopes\BannedModelScope;
 
 trait HasBannedModelScope
 {
