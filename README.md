@@ -1,4 +1,4 @@
-# Laravel Bannable [![GitHub release](https://img.shields.io/github/release/hkp22/laravel-bannable.svg?style=flat-square)](https://github.com/hkp22/laravel-bannable) [![Travis (.org)](https://img.shields.io/travis/hkp22/laravel-bannable.svg?style=flat-square)](https://github.com/hkp22/laravel-bannable) [![StyleCI](https://github.styleci.io/repos/140012721/shield?branch=master)](https://github.styleci.io/repos/140012721) [![GitHub](https://img.shields.io/github/license/hkp22/laravel-bannable.svg)](https://github.com/hkp22/laravel-bannable)
+# Laravel Bannable [![GitHub release](https://img.shields.io/github/release/qirolab/laravel-bannable.svg?style=flat-square)](https://github.com/qirolab/laravel-bannable) [![Travis (.org)](https://img.shields.io/travis/qirolab/laravel-bannable.svg?style=flat-square)](https://github.com/qirolab/laravel-bannable) [![StyleCI](https://github.styleci.io/repos/140012721/shield?branch=master)](https://github.styleci.io/repos/140012721) [![GitHub](https://img.shields.io/github/license/qirolab/laravel-bannable.svg)](https://github.com/qirolab/laravel-bannable)
 
 Laravel bannable package for blocking and banning Eloquent models. Using this package any model can be made bannable such as Organizations, Teams, Groups, and others.
 
@@ -7,7 +7,7 @@ Laravel bannable package for blocking and banning Eloquent models. Using this pa
 Download package into the project using Composer.
 
 ```bash
-composer require hkp22/laravel-bannable
+composer require qirolab/laravel-bannable
 ```
 
 ### Registering package
@@ -17,7 +17,7 @@ For Laravel 5.4 or earlier releases version include the service provider within 
 
 ```php
 'providers' => [
-    Hkp22\Laravel\Bannable\BannableServiceProvider::class,
+    Qirolab\Laravel\Bannable\BannableServiceProvider::class,
 ],
 ```
 
@@ -45,7 +45,7 @@ class AddBannedAtColumnToUsersTable extends Migration
             $table->timestamp('banned_at')->nullable();
         });
     }
-    
+
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
@@ -64,7 +64,7 @@ php artisan migrate
 Use `Bannable` trait in the Model as in below example.
 
 ```
-use Hkp22\Laravel\Bannable\Traits\Bannable;
+use Qirolab\Laravel\Bannable\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -132,7 +132,7 @@ $user->isNotBanned();
 
 ### Delete expired bans manually
 ```php
-Hkp22\Laravel\Bannable\Models\Ban::deleteExpired();
+Qirolab\Laravel\Bannable\Models\Ban::deleteExpired();
 ```
 
 ## Scopes
@@ -170,9 +170,9 @@ public function disableBannedAtScope()
 
 ## Events
 
-On model entity ban `\Hkp22\Laravel\Bannable\Events\ModelWasBanned` event is fired.
+On model entity ban `\Qirolab\Laravel\Bannable\Events\ModelWasBanned` event is fired.
 
-On model entity unban `\Hkp22\Laravel\Bannable\Events\ModelWasUnbanned` event is fired.
+On model entity unban `\Qirolab\Laravel\Bannable\Events\ModelWasUnbanned` event is fired.
 
 ## Middleware
 This package has `forbidBannedUser` route middleware to restrict banned users to go to protected routes.
