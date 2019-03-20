@@ -5,7 +5,6 @@ namespace Qirolab\Laravel\Bannable;
 use Illuminate\Support\ServiceProvider;
 use Qirolab\Laravel\Bannable\Models\Ban;
 use Qirolab\Laravel\Bannable\Observers\BanObserver;
-use Qirolab\Laravel\Bannable\Middleware\ForbidBannedUser;
 
 class BannableServiceProvider extends ServiceProvider
 {
@@ -28,7 +27,6 @@ class BannableServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerMiddleware();
     }
 
     /**
@@ -57,15 +55,5 @@ class BannableServiceProvider extends ServiceProvider
     protected function registerObservers()
     {
         $this->app->make(Ban::class)->observe(new BanObserver);
-    }
-
-    /**
-     * Register middleware.
-     *
-     * @return void
-     */
-    protected function registerMiddleware()
-    {
-        $this->app['router']->aliasMiddleware('forbidBannedUser', ForbidBannedUser::class);
     }
 }

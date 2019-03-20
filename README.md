@@ -175,9 +175,10 @@ On model entity ban `\Qirolab\Laravel\Bannable\Events\ModelWasBanned` event is f
 On model entity unban `\Qirolab\Laravel\Bannable\Events\ModelWasUnbanned` event is fired.
 
 ## Middleware
-This package has `forbidBannedUser` route middleware to restrict banned users to go to protected routes.
+To prevent banned users to go to protected routes `Qirolab\Laravel\Bannable\Middleware\ForbidBannedUser` middleware is created.
 
-```php
-Route::get('/dashboard', 'DashboardController@index')->middleware('forbidBannedUser');
-```
+Register it in $routeMiddleware array of app/Http/Kernel.php file:
 
+protected $routeMiddleware = [
+    'isBannedUser' => \Qirolab\Laravel\Bannable\Middleware\ForbidBannedUser::class,
+]

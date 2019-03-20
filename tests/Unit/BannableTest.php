@@ -48,9 +48,7 @@ class BannableTest extends TestCase
 
         $user->ban();
 
-        $user->refresh();
-
-        $this->assertNotNull($user->banned_at);
+        $this->assertNotNull($user->fresh()->banned_at);
     }
 
     /** @test */
@@ -92,10 +90,8 @@ class BannableTest extends TestCase
 
         $user->unban();
 
-        $user->refresh();
-
         // without Trash
-        $this->assertCount(0, $user->bans);
+        $this->assertCount(0, $user->fresh()->bans);
 
         // with Trash
         $this->assertCount(1, $user->bans()->withTrashed()->get());
@@ -152,11 +148,9 @@ class BannableTest extends TestCase
 
         $ban = $user->bans()->create();
 
-        $user->refresh();
-
         $this->assertInstanceOf(Ban::class, $ban);
 
-        $this->assertTrue($user->isBanned());
+        $this->assertTrue($user->fresh()->isBanned());
     }
 
     /** @test */

@@ -21,9 +21,11 @@ abstract class TestCase extends Orchestra
 
         $this->publishPackageMigrations();
 
-        $this->migratePackageTables();
+        // $this->migratePackageTables();
 
-        $this->migrateUnitTestTables();
+        // $this->migrateUnitTestTables();
+
+        $this->setUpDatabase();
 
         $this->registerPackageFactories();
     }
@@ -87,28 +89,42 @@ abstract class TestCase extends Orchestra
     }
 
     /**
+     * Set up the database.
+     *
+     * @return void
+     */
+    protected function setUpDatabase()
+    {
+        include_once __DIR__.'/../migrations/2018_06_25_000000_create_bans_table.php';
+        include_once __DIR__.'/database/migrations/2018_06_25_000000__create_user_table.php';
+
+        (new \CreateBansTable())->up();
+        (new \CreateUserTable())->up();
+    }
+
+    /**
      * Perform package database migrations.
      *
      * @return void
      */
-    protected function migratePackageTables()
-    {
-        $this->loadMigrationsFrom([
-            '--realpath' => database_path('migrations'),
-        ]);
-    }
+    // protected function migratePackageTables()
+    // {
+    //     $this->loadMigrationsFrom([
+    //         '--realpath' => database_path('migrations'),
+    //     ]);
+    // }
 
-    /**
-     * Perform unit test database migrations.
-     *
-     * @return void
-     */
-    protected function migrateUnitTestTables()
-    {
-        $this->loadMigrationsFrom([
-            '--realpath' => realpath(__DIR__.'/database/migrations'),
-        ]);
-    }
+    // /**
+    //  * Perform unit test database migrations.
+    //  *
+    //  * @return void
+    //  */
+    // protected function migrateUnitTestTables()
+    // {
+    //     $this->loadMigrationsFrom([
+    //         '--realpath' => realpath(__DIR__.'/database/migrations'),
+    //     ]);
+    // }
 
     /**
      * Register package related model factories.
