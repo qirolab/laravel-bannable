@@ -15,7 +15,7 @@ class BannableTraitNotUsed extends Exception
             $class = "'".get_class($message)."'";
         }
 
-        $message = "'Hkp22\Laravel\Bannable\Traits\Bannable' trait is not used in {$class} model.";
+        $message = "'Qirolab\Laravel\Bannable\Traits\Bannable' trait is not used in {$class} model.";
 
         parent::__construct($message, $code, $previous);
     }
