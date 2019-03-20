@@ -18,9 +18,7 @@ class BanObserverTest extends TestCase
 
         $user->bans()->create([]);
 
-        $user->refresh();
-
-        $this->assertNotNull($user->banned_at);
+        $this->assertNotNull($user->fresh()->banned_at);
     }
 
     /** @test */
@@ -57,8 +55,6 @@ class BanObserverTest extends TestCase
 
         $user->unban();
 
-        $user->refresh();
-
-        $this->assertNull($user->banned_at);
+        $this->assertNull($user->fresh()->banned_at);
     }
 }

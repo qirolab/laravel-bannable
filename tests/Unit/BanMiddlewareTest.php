@@ -16,7 +16,7 @@ class BanMiddlewareTest extends TestCase
 
         $user->ban();
 
-        $this->actingAs($user->refresh());
+        $this->actingAs($user->fresh());
 
         $request = Request::create('/test', 'GET');
 
