@@ -88,7 +88,6 @@ abstract class TestCase extends Orchestra
         $app['config']->set('auth.providers.users.model', User::class);
     }
 
-
     /**
      * Set up the database.
      *
@@ -102,7 +101,6 @@ abstract class TestCase extends Orchestra
         (new \CreateBansTable())->up();
         (new \CreateUserTable())->up();
     }
-
 
     /**
      * Perform package database migrations.
