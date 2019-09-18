@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-bannable` will be documented in this file
 
+## 2.2.0 - 2019-09-18
+- Laravel 6.0 support
+
 ## 2.1.0 - 2019-03-20
 
 - Laravel 5.8 compatibility
