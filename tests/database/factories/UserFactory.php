@@ -1,6 +1,5 @@
 <?php
 
-
 use Faker\Generator as Faker;
 use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
 use Qirolab\Tests\Laravel\Bannable\Stubs\Models\UserWithoutBannableTrait;
