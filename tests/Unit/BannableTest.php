@@ -4,8 +4,8 @@ namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
 use Carbon\Carbon;
 use Qirolab\Laravel\Bannable\Models\Ban;
-use Qirolab\Tests\Laravel\Bannable\TestCase;
 use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
+use Qirolab\Tests\Laravel\Bannable\TestCase;
 
 class BannableTest extends TestCase
 {
@@ -78,12 +78,12 @@ class BannableTest extends TestCase
     public function model_can_soft_delete_ban_on_unban()
     {
         $user = factory(User::class)->create([
-             'banned_at' => Carbon::now(),
+            'banned_at' => Carbon::now(),
         ]);
 
         factory(Ban::class)->create([
-             'bannable_id' => $user->getKey(),
-             'bannable_type' => $user->getMorphClass(),
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
         ]);
 
         $this->assertCount(1, $user->bans);

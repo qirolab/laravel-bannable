@@ -3,9 +3,9 @@
 namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
 use Illuminate\Http\Request;
-use Qirolab\Tests\Laravel\Bannable\TestCase;
-use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
 use Qirolab\Laravel\Bannable\Middleware\ForbidBannedUser;
+use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
+use Qirolab\Tests\Laravel\Bannable\TestCase;
 
 class BanMiddlewareTest extends TestCase
 {

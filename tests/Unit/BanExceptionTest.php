@@ -3,10 +3,10 @@
 namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
 use Illuminate\Http\Request;
-use Qirolab\Tests\Laravel\Bannable\TestCase;
-use Qirolab\Laravel\Bannable\Middleware\ForbidBannedUser;
 use Qirolab\Laravel\Bannable\Exceptions\BannableTraitNotUsed;
+use Qirolab\Laravel\Bannable\Middleware\ForbidBannedUser;
 use Qirolab\Tests\Laravel\Bannable\Stubs\Models\UserWithoutBannableTrait;
+use Qirolab\Tests\Laravel\Bannable\TestCase;
 
 class BanExceptionTest extends TestCase
 {

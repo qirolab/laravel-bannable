@@ -2,9 +2,9 @@
 
 namespace Qirolab\Laravel\Bannable\Observers;
 
-use Qirolab\Laravel\Bannable\Models\Ban;
 use Qirolab\Laravel\Bannable\Events\ModelWasBanned;
 use Qirolab\Laravel\Bannable\Events\ModelWasUnbanned;
+use Qirolab\Laravel\Bannable\Models\Ban;
 
 class BanObserver
 {

@@ -4,8 +4,8 @@ namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
 use Carbon\Carbon;
 use Qirolab\Laravel\Bannable\Models\Ban;
-use Qirolab\Tests\Laravel\Bannable\TestCase;
 use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
+use Qirolab\Tests\Laravel\Bannable\TestCase;
 
 class BanObserverTest extends TestCase
 {
