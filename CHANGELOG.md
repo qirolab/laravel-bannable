@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-bannable` will be documented in this file
 
+## 2.3.0 - 2020-03-09
+- Laravel 7.0 support
+
 ## 2.2.0 - 2019-09-18
 - Laravel 6.0 support
 

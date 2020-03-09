@@ -13,7 +13,7 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
