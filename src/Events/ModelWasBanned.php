@@ -2,9 +2,9 @@
 
 namespace Qirolab\Laravel\Bannable\Events;
 
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Model;
 use Qirolab\Laravel\Bannable\Models\Ban;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ModelWasBanned implements ShouldQueue
 {

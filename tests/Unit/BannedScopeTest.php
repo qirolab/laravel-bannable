@@ -3,9 +3,9 @@
 namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
 use Carbon\Carbon;
-use Qirolab\Tests\Laravel\Bannable\TestCase;
 use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
 use Qirolab\Tests\Laravel\Bannable\Stubs\Models\UserModelWithDisabledBannedScope;
+use Qirolab\Tests\Laravel\Bannable\TestCase;
 
 class BannedScopeTest extends TestCase
 {
@@ -61,12 +61,12 @@ class BannedScopeTest extends TestCase
     public function it_can_get_only_banned_models()
     {
         factory(User::class, 2)->create([
-             'banned_at' => Carbon::now()->subDay(),
-         ]);
+            'banned_at' => Carbon::now()->subDay(),
+        ]);
 
         factory(User::class, 3)->create([
-             'banned_at' => null,
-         ]);
+            'banned_at' => null,
+        ]);
 
         $entities = User::onlyBanned()->get();
 

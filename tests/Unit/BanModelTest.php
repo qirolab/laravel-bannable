@@ -4,8 +4,8 @@ namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
 use Carbon\Carbon;
 use Qirolab\Laravel\Bannable\Models\Ban;
-use Qirolab\Tests\Laravel\Bannable\TestCase;
 use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
+use Qirolab\Tests\Laravel\Bannable\TestCase;
 
 class BanModelTest extends TestCase
 {
@@ -75,9 +75,9 @@ class BanModelTest extends TestCase
         $user = factory(User::class)->create();
 
         $ban = factory(Ban::class)->create([
-             'bannable_id' => $user->getKey(),
-             'bannable_type' => $user->getMorphClass(),
-         ]);
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
+        ]);
 
         $this->assertInstanceOf(User::class, $ban->bannable);
     }

@@ -2,9 +2,9 @@
 
 namespace Qirolab\Laravel\Bannable\Scopes;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Illuminate\Database\Eloquent\Builder;
 
 class BannedModelScope implements Scope
 {

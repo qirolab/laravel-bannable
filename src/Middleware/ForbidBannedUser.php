@@ -38,8 +38,8 @@ class ForbidBannedUser
         try {
             if ($user && $user->isBanned()) {
                 return redirect()->back()->withInput()->withErrors([
-                            'login' => 'This account is blocked.',
-                        ]);
+                    'login' => 'This account is blocked.',
+                ]);
             }
         } catch (\BadMethodCallException $e) {
             throw new BannableTraitNotUsed($user);

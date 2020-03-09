@@ -2,9 +2,9 @@
 
 namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
-use Qirolab\Tests\Laravel\Bannable\TestCase;
 use Qirolab\Laravel\Bannable\Events\ModelWasBanned;
 use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
+use Qirolab\Tests\Laravel\Bannable\TestCase;
 
 class ModelBannedEventTest extends TestCase
 {
