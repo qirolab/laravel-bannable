@@ -15,7 +15,7 @@ class BanExceptionTest extends TestCase
     {
         $this->expectException(BannableTraitNotUsed::class);
 
-        $user = factory(UserWithoutBannableTrait::class)->create();
+        $user = $this->createUser(UserWithoutBannableTrait::class);
 
         $this->actingAs($user);
 

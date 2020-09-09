@@ -3,7 +3,6 @@
 namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
 use Carbon\Carbon;
-use Qirolab\Laravel\Bannable\Models\Ban;
 use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
 use Qirolab\Tests\Laravel\Bannable\TestCase;
 
@@ -12,7 +11,7 @@ class BanObserverTest extends TestCase
     /** @test */
     public function it_can_set_banned_flag_to_owner_model_on_create()
     {
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => null,
         ]);
 
@@ -24,9 +23,9 @@ class BanObserverTest extends TestCase
     /** @test */
     public function it_can_set_created_by_id_and_type_before_creating()
     {
-        $bannedBy = factory(User::class)->create();
+        $bannedBy = $this->createUser(User::class);
 
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => null,
         ]);
 
@@ -42,11 +41,11 @@ class BanObserverTest extends TestCase
     /** @test */
     public function it_can_unset_banned_flag_to_owner_model_on_delete()
     {
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => Carbon::now(),
         ]);
 
-        factory(Ban::class)->create([
+        $this->createBan([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);

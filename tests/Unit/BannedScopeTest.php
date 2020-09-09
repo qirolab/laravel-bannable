@@ -12,13 +12,13 @@ class BannedScopeTest extends TestCase
     /** @test */
     public function it_can_get_all_unbanned_models_by_default()
     {
-        factory(User::class, 2)->create([
+        $this->createUser(User::class, [
             'banned_at' => Carbon::now()->subDay(),
-        ]);
+        ], 2);
 
-        factory(User::class, 3)->create([
+        $this->createUser(User::class, [
             'banned_at' => null,
-        ]);
+        ], 3);
 
         $entities = User::all();
 
@@ -28,13 +28,13 @@ class BannedScopeTest extends TestCase
     /** @test */
     public function it_can_get_models_without_banned()
     {
-        factory(User::class, 2)->create([
+        $this->createUser(User::class, [
             'banned_at' => Carbon::now()->subDay(),
-        ]);
+        ], 2);
 
-        factory(User::class, 3)->create([
+        $this->createUser(User::class, [
             'banned_at' => null,
-        ]);
+        ], 3);
 
         $entities = User::withoutBanned()->get();
 
@@ -44,13 +44,13 @@ class BannedScopeTest extends TestCase
     /** @test */
     public function it_can_get_models_with_banned()
     {
-        factory(User::class, 2)->create([
+        $this->createUser(User::class, [
             'banned_at' => Carbon::now()->subDay(),
-        ]);
+        ], 2);
 
-        factory(User::class, 3)->create([
+        $this->createUser(User::class, [
             'banned_at' => null,
-        ]);
+        ], 3);
 
         $entities = User::withBanned()->get();
 
@@ -60,13 +60,13 @@ class BannedScopeTest extends TestCase
     /** @test */
     public function it_can_get_only_banned_models()
     {
-        factory(User::class, 2)->create([
+        $this->createUser(User::class, [
             'banned_at' => Carbon::now()->subDay(),
-        ]);
+        ], 2);
 
-        factory(User::class, 3)->create([
+        $this->createUser(User::class, [
             'banned_at' => null,
-        ]);
+        ], 3);
 
         $entities = User::onlyBanned()->get();
 
@@ -76,13 +76,13 @@ class BannedScopeTest extends TestCase
     /** @test */
     public function it_can_disable_banned_at_default_scope()
     {
-        factory(User::class, 3)->create([
+        $this->createUser(User::class, [
             'banned_at' => Carbon::now()->subDay(),
-        ]);
+        ], 2);
 
-        factory(User::class, 2)->create([
+        $this->createUser(User::class, [
             'banned_at' => null,
-        ]);
+        ], 3);
 
         $entities = UserModelWithDisabledBannedScope::all();
 

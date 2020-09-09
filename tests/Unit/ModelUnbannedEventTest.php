@@ -3,7 +3,6 @@
 namespace Qirolab\Tests\Laravel\Bannable\Unit;
 
 use Qirolab\Laravel\Bannable\Events\ModelWasUnbanned;
-use Qirolab\Laravel\Bannable\Models\Ban;
 use Qirolab\Tests\Laravel\Bannable\TestCase;
 
 class ModelUnbannedEventTest extends TestCase
@@ -13,7 +12,7 @@ class ModelUnbannedEventTest extends TestCase
     {
         $this->expectsEvents(ModelWasUnbanned::class);
 
-        $ban = factory(Ban::class)->create();
+        $ban = $this->createBan();
 
         $ban->bannable->unban();
     }
@@ -23,7 +22,7 @@ class ModelUnbannedEventTest extends TestCase
     {
         $this->expectsEvents(ModelWasUnbanned::class);
 
-        $ban = factory(Ban::class)->create();
+        $ban = $this->createBan();
 
         $ban->delete();
     }

@@ -37,9 +37,9 @@ class BanModelTest extends TestCase
     /** @test */
     public function it_can_has_ban_creator()
     {
-        $bannedBy = factory(User::class)->create();
+        $bannedBy = $this->createUser(User::class);
 
-        $ban = factory(Ban::class)->create([
+        $ban = $this->createBan([
             'created_by_id' => $bannedBy->getKey(),
             'created_by_type' => $bannedBy->getMorphClass(),
         ]);
@@ -72,11 +72,11 @@ class BanModelTest extends TestCase
     /** @test */
     public function it_can_has_bannable_model()
     {
-        $user = factory(User::class)->create();
+        $user = $this->createUser(User::class);
 
-        $ban = factory(Ban::class)->create([
-            'bannable_id' => $user->getKey(),
-            'bannable_type' => $user->getMorphClass(),
+        $ban = $this->createBan([
+            'created_by_id' => $user->getKey(),
+            'created_by_type' => $user->getMorphClass(),
         ]);
 
         $this->assertInstanceOf(User::class, $ban->bannable);
@@ -85,13 +85,13 @@ class BanModelTest extends TestCase
     /** @test */
     public function it_can_delete_all_expired_bans()
     {
-        factory(Ban::class, 3)->create([
+        $this->createBan([
             'expired_at' => Carbon::now()->subMonth(),
-        ]);
+        ], 3);
 
-        factory(Ban::class, 4)->create([
+        $this->createBan([
             'expired_at' => Carbon::now()->addMonth(),
-        ]);
+        ], 4);
 
         Ban::deleteExpired();
 
@@ -101,19 +101,19 @@ class BanModelTest extends TestCase
     /** @test */
     public function it_can_scope_bannable_models()
     {
-        $user1 = factory(User::class)->create();
+        $user1 = $this->createUser(User::class);
 
-        factory(Ban::class, 4)->create([
+        $this->createBan([
             'bannable_id' => $user1->getKey(),
             'bannable_type' => $user1->getMorphClass(),
-        ]);
+        ], 4);
 
-        $user2 = factory(User::class)->create();
+        $user2 = $this->createUser(User::class);
 
-        factory(Ban::class, 2)->create([
+        $this->createBan([
             'bannable_id' => $user2->getKey(),
             'bannable_type' => $user2->getMorphClass(),
-        ]);
+        ], 2);
 
         $bannableModels = Ban::whereBannable($user1)->get();
         $this->assertCount(4, $bannableModels);

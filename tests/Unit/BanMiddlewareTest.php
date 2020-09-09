@@ -12,7 +12,7 @@ class BanMiddlewareTest extends TestCase
     /** @test */
     public function it_redirected_back_to_banned_user()
     {
-        $user = factory(User::class)->create();
+        $user = $this->createUser(User::class);
 
         $user->ban();
 
@@ -31,7 +31,7 @@ class BanMiddlewareTest extends TestCase
     /** @test */
     public function it_cannot_redirect_to_non_banned_user()
     {
-        $user = factory(User::class)->create();
+        $user = $this->createUser(User::class);
 
         $this->actingAs($user);
 

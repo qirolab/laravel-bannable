@@ -2,8 +2,12 @@
 
 namespace Qirolab\Tests\Laravel\Bannable;
 
+use Faker\Factory;
+use Faker\Generator;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\File;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Qirolab\Laravel\Bannable\Models\Ban;
 use Qirolab\Tests\Laravel\Bannable\Stubs\Models\User;
 
 abstract class TestCase extends Orchestra
@@ -21,13 +25,7 @@ abstract class TestCase extends Orchestra
 
         $this->publishPackageMigrations();
 
-        // $this->migratePackageTables();
-
-        // $this->migrateUnitTestTables();
-
         $this->setUpDatabase();
-
-        $this->registerPackageFactories();
     }
 
     /**
@@ -50,7 +48,7 @@ abstract class TestCase extends Orchestra
      */
     protected function destroyPackageMigrations()
     {
-        File::cleanDirectory(__DIR__.'/../vendor/orchestra/testbench-core/laravel/database/migrations');
+        File::cleanDirectory(__DIR__ . '/../vendor/orchestra/testbench-core/laravel/database/migrations');
     }
 
     /**
@@ -95,46 +93,72 @@ abstract class TestCase extends Orchestra
      */
     protected function setUpDatabase()
     {
-        include_once __DIR__.'/../migrations/2018_06_25_000000_create_bans_table.php';
-        include_once __DIR__.'/database/migrations/2018_06_25_000000__create_user_table.php';
+        include_once __DIR__ . '/../migrations/2018_06_25_000000_create_bans_table.php';
+        include_once __DIR__ . '/database/migrations/2018_06_25_000000__create_user_table.php';
 
         (new \CreateBansTable())->up();
         (new \CreateUserTable())->up();
     }
 
-    /**
-     * Perform package database migrations.
-     *
-     * @return void
-     */
-    // protected function migratePackageTables()
-    // {
-    //     $this->loadMigrationsFrom([
-    //         '--realpath' => database_path('migrations'),
-    //     ]);
-    // }
-
-    // /**
-    //  * Perform unit test database migrations.
-    //  *
-    //  * @return void
-    //  */
-    // protected function migrateUnitTestTables()
-    // {
-    //     $this->loadMigrationsFrom([
-    //         '--realpath' => realpath(__DIR__.'/database/migrations'),
-    //     ]);
-    // }
-
-    /**
-     * Register package related model factories.
-     *
-     * @return void
-     */
-    private function registerPackageFactories()
+    protected function faker($locale = null)
     {
-        $pathToFactories = realpath(__DIR__.'/database/factories');
+        $locale = $locale ?? Factory::DEFAULT_LOCALE;
 
-        $this->withFactories($pathToFactories);
+        if (isset($this->app) && $this->app->bound(Generator::class)) {
+            return $this->app->make(Generator::class, ['locale' => $locale]);
+        }
+
+        return Factory::create($locale);
+    }
+
+    public function factory($class, $attributes = [], $amount = null)
+    {
+        if (isset($amount) && is_int($amount)) {
+            $resource = [];
+
+            for ($i = 0; $i < $amount; $i++) {
+                $resource[] = (new $class)->forceCreate($attributes);
+            }
+
+            return new Collection($resource);
+        }
+
+        return (new $class)->forceCreate($attributes);
+    }
+
+    public function createUser($class = null, $attributes = [], $amount = null)
+    {
+        $class = $class ?? User::class;
+        return $this->factory(
+            $class,
+            array_merge(
+                ['name' => $this->faker()->name],
+                $attributes
+            ),
+            $amount
+        );
+    }
+
+    public function createBan($attributes = [], $amount = null)
+    {
+        $bannable = $this->createUser(User::class);
+        // dd(array_merge(
+        //     [
+        //         'bannable_id' => $bannable->getKey(),
+        //         'bannable_type' => $bannable->getMorphClass(),
+        //     ],
+        //     $attributes
+        // ));
+        return $this->factory(
+            Ban::class,
+            array_merge(
+                [
+                    'bannable_id' => $bannable->getKey(),
+                    'bannable_type' => $bannable->getMorphClass(),
+                ],
+                $attributes
+            ),
+            $amount
+        );
     }
 }

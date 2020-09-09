@@ -12,9 +12,9 @@ class BannableTest extends TestCase
     /** @test */
     public function model_can_has_related_ban()
     {
-        $user = factory(User::class)->create();
+        $user = $this->createUser(User::class);
 
-        $ban = factory(Ban::class)->create([
+        $ban = $this->createBan([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);
@@ -29,12 +29,12 @@ class BannableTest extends TestCase
     /** @test */
     public function model_can_has_many_related_bans()
     {
-        $user = factory(User::class)->create();
+        $user = $this->createUser(User::class);
 
-        factory(Ban::class, 2)->create([
+        $this->createBan([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
-        ]);
+        ], 2);
 
         $this->assertCount(2, $user->bans);
     }
@@ -42,7 +42,7 @@ class BannableTest extends TestCase
     /** @test */
     public function model_can_ban()
     {
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => null,
         ]);
 
@@ -54,11 +54,11 @@ class BannableTest extends TestCase
     /** @test */
     public function model_can_unban()
     {
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => Carbon::now(),
         ]);
 
-        factory(Ban::class)->create([
+        $this->createBan([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);
@@ -77,11 +77,11 @@ class BannableTest extends TestCase
     /** @test */
     public function model_can_soft_delete_ban_on_unban()
     {
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => Carbon::now(),
         ]);
 
-        factory(Ban::class)->create([
+        $this->createBan([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);
@@ -100,7 +100,7 @@ class BannableTest extends TestCase
     /** @test */
     public function model_can_return_ban_model()
     {
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => null,
         ]);
 
@@ -112,7 +112,7 @@ class BannableTest extends TestCase
     /** @test */
     public function model_can_has_empty_banned_by()
     {
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => null,
         ]);
 
@@ -124,9 +124,9 @@ class BannableTest extends TestCase
     /** @test */
     public function model_can_has_current_user_as_banned_by()
     {
-        $bannedBy = factory(User::class)->create();
+        $bannedBy = $this->createUser(User::class);
 
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => null,
         ]);
 
@@ -142,7 +142,7 @@ class BannableTest extends TestCase
     /** @test */
     public function model_can_ban_via_ban_relation_create()
     {
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => null,
         ]);
 
@@ -156,7 +156,7 @@ class BannableTest extends TestCase
     /** @test */
     public function model_can_ban_with_comment()
     {
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => null,
         ]);
 
@@ -170,7 +170,7 @@ class BannableTest extends TestCase
     /** @test */
     public function model_can_ban_with_expiration_date()
     {
-        $user = factory(User::class)->create([
+        $user = $this->createUser(User::class, [
             'banned_at' => null,
         ]);
 
