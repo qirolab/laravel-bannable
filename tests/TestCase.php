@@ -48,7 +48,7 @@ abstract class TestCase extends Orchestra
      */
     protected function destroyPackageMigrations()
     {
-        File::cleanDirectory(__DIR__ . '/../vendor/orchestra/testbench-core/laravel/database/migrations');
+        File::cleanDirectory(__DIR__.'/../vendor/orchestra/testbench-core/laravel/database/migrations');
     }
 
     /**
@@ -93,8 +93,8 @@ abstract class TestCase extends Orchestra
      */
     protected function setUpDatabase()
     {
-        include_once __DIR__ . '/../migrations/2018_06_25_000000_create_bans_table.php';
-        include_once __DIR__ . '/database/migrations/2018_06_25_000000__create_user_table.php';
+        include_once __DIR__.'/../migrations/2018_06_25_000000_create_bans_table.php';
+        include_once __DIR__.'/database/migrations/2018_06_25_000000__create_user_table.php';
 
         (new \CreateBansTable())->up();
         (new \CreateUserTable())->up();
@@ -129,6 +129,7 @@ abstract class TestCase extends Orchestra
     public function createUser($class = null, $attributes = [], $amount = null)
     {
         $class = $class ?? User::class;
+
         return $this->factory(
             $class,
             array_merge(

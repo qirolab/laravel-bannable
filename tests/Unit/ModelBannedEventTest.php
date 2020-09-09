@@ -13,7 +13,7 @@ class ModelBannedEventTest extends TestCase
     {
         $this->expectsEvents(ModelWasBanned::class);
 
-        $entity = $this->createUser(User::class);;
+        $entity = $this->createUser(User::class);
 
         $entity->ban();
     }
@@ -23,7 +23,7 @@ class ModelBannedEventTest extends TestCase
     {
         $this->expectsEvents(ModelWasBanned::class);
 
-        $entity = $this->createUser(User::class);;
+        $entity = $this->createUser(User::class);
 
         $entity->bans()->create();
     }
