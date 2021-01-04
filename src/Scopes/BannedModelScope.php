@@ -22,23 +22,23 @@ class BannedModelScope implements Scope
     /**
      * Apply the scope to a given Eloquent query builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $builder
-     * @param  \Illuminate\Database\Eloquent\Model   $model
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param  Builder $builder
+     * @param  Model   $model
+     * @return void
      */
     public function apply(Builder $builder, Model $model)
     {
         if (method_exists($model, 'disableBannedAtScope') && $model->disableBannedAtScope()) {
-            return $builder;
+            return;
         }
 
-        return $builder->whereNull('banned_at');
+        $builder->whereNull('banned_at');
     }
 
     /**
      * Extend the query builder with the needed functions.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $builder
+     * @param  Builder $builder
      * @return void
      */
     public function extend(Builder $builder)

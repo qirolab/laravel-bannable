@@ -3,26 +3,11 @@
 namespace Qirolab\Laravel\Bannable\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Factory as Auth;
+use Illuminate\Support\Facades\Auth;
 use Qirolab\Laravel\Bannable\Exceptions\BannableTraitNotUsed;
 
 class ForbidBannedUser
 {
-    /**
-     * The Auth implementation.
-     *
-     * @var \Illuminate\Contracts\Auth\Factory
-     */
-    protected $auth;
-
-    /**
-     * @param \Illuminate\Contracts\Auth\Factory $auth
-     */
-    public function __construct(Auth $auth)
-    {
-        $this->auth = $auth;
-    }
-
     /**
      * Handle an incoming request.
      *
@@ -33,16 +18,16 @@ class ForbidBannedUser
      */
     public function handle($request, Closure $next)
     {
-        $user = $this->auth->user();
+        $user = Auth::user();
 
-        try {
-            if ($user && $user->isBanned()) {
-                return redirect()->back()->withInput()->withErrors([
-                    'login' => 'This account is blocked.',
-                ]);
-            }
-        } catch (\BadMethodCallException $e) {
-            throw new BannableTraitNotUsed($user);
+        if ($user && ! method_exists($user, 'isBanned')) {
+            throw new BannableTraitNotUsed(get_class($user));
+        }
+
+        if ($user && $user->isBanned()) {
+            return redirect()->back()->withInput()->withErrors([
+                'login' => 'This account is blocked.',
+            ]);
         }
 
         return $next($request);

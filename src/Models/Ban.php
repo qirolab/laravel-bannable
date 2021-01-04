@@ -38,7 +38,8 @@ class Ban extends Model
     /**
      * Expired timestamp mutator.
      *
-     * @param \Carbon\Carbon|string $value
+     * @param  \Carbon\Carbon|string $value
+     * @return void
      */
     public function setExpiredAtAttribute($value)
     {
@@ -78,7 +79,7 @@ class Ban extends Model
     {
         $bans = self::where('expired_at', '<=', Carbon::now()->format('Y-m-d H:i:s'))->get();
 
-        $bans->each(function ($ban) {
+        $bans->each(function (Ban $ban) {
             $ban->delete();
         });
     }
@@ -86,9 +87,9 @@ class Ban extends Model
     /**
      * Scope a query to only include models by owner.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @param  Model                                 $bannable
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param  Builder $query
+     * @param  Model   $bannable
+     * @return Builder
      */
     public function scopeWhereBannable(Builder $query, Model $bannable)
     {
