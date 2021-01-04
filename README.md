@@ -1,4 +1,10 @@
-# Laravel Bannable [![GitHub release](https://img.shields.io/github/release/qirolab/laravel-bannable.svg?style=flat-square)](https://github.com/qirolab/laravel-bannable) [![Travis (.org)](https://img.shields.io/travis/qirolab/laravel-bannable.svg?style=flat-square)](https://github.com/qirolab/laravel-bannable) [![StyleCI](https://github.styleci.io/repos/140012721/shield?branch=master)](https://github.styleci.io/repos/140012721) [![GitHub](https://img.shields.io/github/license/qirolab/laravel-bannable.svg)](https://github.com/qirolab/laravel-bannable)
+# Laravel Bannable
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/qirolab/laravel-bannable.svg?style=flat-square)](https://packagist.org/packages/qirolab/laravel-bannable)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/qirolab/laravel-bannable/Tests?label=Tests)](https://github.com/qirolab/laravel-bannable/actions?query=workflow%3ATests+branch%3Amaster)
+[![Styling](https://github.com/qirolab/laravel-bannable/workflows/Check%20&%20fix%20styling/badge.svg)](https://github.com/qirolab/laravel-bannable/actions?query=workflow%3A%22Check+%26+fix+styling%22)
+[![Psalm](https://github.com/qirolab/laravel-bannable/workflows/Psalm/badge.svg)](https://github.com/qirolab/laravel-bannable/actions?query=workflow%3APsalm)
+[![GitHub](https://img.shields.io/github/license/qirolab/laravel-bannable.svg)](https://github.com/qirolab/laravel-bannable)
 
 Laravel bannable package for blocking and banning Eloquent models. Using this package any model can be made bannable such as Organizations, Teams, Groups, and others.
 
