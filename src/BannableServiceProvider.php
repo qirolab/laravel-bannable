@@ -54,6 +54,6 @@ class BannableServiceProvider extends ServiceProvider
      */
     protected function registerObservers()
     {
-        $this->app->make(Ban::class)->observe(new BanObserver);
+        $this->app->make(Ban::class)->observe(new BanObserver());
     }
 }

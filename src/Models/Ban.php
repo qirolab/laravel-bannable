@@ -38,7 +38,7 @@ class Ban extends Model
     /**
      * Expired timestamp mutator.
      *
-     * @param  \Carbon\Carbon|string $value
+     * @param  \Carbon\Carbon|string  $value
      * @return void
      */
     public function setExpiredAtAttribute($value)
@@ -87,8 +87,8 @@ class Ban extends Model
     /**
      * Scope a query to only include models by owner.
      *
-     * @param  Builder $query
-     * @param  Model   $bannable
+     * @param  Builder  $query
+     * @param  Model  $bannable
      * @return Builder
      */
     public function scopeWhereBannable(Builder $query, Model $bannable)
