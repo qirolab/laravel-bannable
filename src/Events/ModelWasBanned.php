@@ -19,8 +19,8 @@ class ModelWasBanned implements ShouldQueue
     public $ban;
 
     /**
-     * @param Model $bannable
-     * @param Ban   $ban
+     * @param  Model  $bannable
+     * @param  Ban  $ban
      */
     public function __construct(Model $bannable, Ban $ban)
     {

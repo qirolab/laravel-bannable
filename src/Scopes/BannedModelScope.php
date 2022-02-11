@@ -22,8 +22,8 @@ class BannedModelScope implements Scope
     /**
      * Apply the scope to a given Eloquent query builder.
      *
-     * @param  Builder $builder
-     * @param  Model   $model
+     * @param  Builder  $builder
+     * @param  Model  $model
      * @return void
      */
     public function apply(Builder $builder, Model $model)
@@ -38,7 +38,7 @@ class BannedModelScope implements Scope
     /**
      * Extend the query builder with the needed functions.
      *
-     * @param  Builder $builder
+     * @param  Builder  $builder
      * @return void
      */
     public function extend(Builder $builder)
@@ -53,7 +53,7 @@ class BannedModelScope implements Scope
     /**
      * Add the `withBanned` extension to the builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $builder
+     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
     protected function scopeWithBanned(Builder $builder)
@@ -66,7 +66,7 @@ class BannedModelScope implements Scope
     /**
      * Add the `withoutBanned` extension to the builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $builder
+     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
     protected function scopeWithoutBanned(Builder $builder)
@@ -79,7 +79,7 @@ class BannedModelScope implements Scope
     /**
      * Add the `onlyBanned` extension to the builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $builder
+     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
     protected function scopeOnlyBanned(Builder $builder)
