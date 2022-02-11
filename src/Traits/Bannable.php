@@ -22,7 +22,7 @@ trait Bannable
     /**
      * Ban model.
      *
-     * @param  null|array $attributes
+     * @param  null|array  $attributes
      * @return Ban
      */
     public function ban(array $attributes = [])
