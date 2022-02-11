@@ -117,13 +117,13 @@ abstract class TestCase extends Orchestra
             $resource = [];
 
             for ($i = 0; $i < $amount; $i++) {
-                $resource[] = (new $class)->forceCreate($attributes);
+                $resource[] = (new $class())->forceCreate($attributes);
             }
 
             return new Collection($resource);
         }
 
-        return (new $class)->forceCreate($attributes);
+        return (new $class())->forceCreate($attributes);
     }
 
     public function createUser($class = null, $attributes = [], $amount = null)
