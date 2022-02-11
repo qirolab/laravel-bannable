@@ -13,6 +13,6 @@ trait HasBannedModelScope
      */
     public static function bootHasBannedModelScope()
     {
-        static::addGlobalScope(new BannedModelScope);
+        static::addGlobalScope(new BannedModelScope());
     }
 }
