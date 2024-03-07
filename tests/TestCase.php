@@ -78,7 +78,7 @@ abstract class TestCase extends Orchestra
     /**
      * Set default user model used by tests.
      *
-     * @param $app
+     * @param  $app
      * @return void
      */
     private function setDefaultUserModel($app)
@@ -143,6 +143,7 @@ abstract class TestCase extends Orchestra
     public function createBan($attributes = [], $amount = null)
     {
         $bannable = $this->createUser(User::class);
+
         // dd(array_merge(
         //     [
         //         'bannable_id' => $bannable->getKey(),
