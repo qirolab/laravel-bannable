@@ -78,7 +78,7 @@ abstract class TestCase extends Orchestra
     /**
      * Set default user model used by tests.
      *
-     * @param $app
+     * @param  $app
      * @return void
      */
     private function setDefaultUserModel($app)
