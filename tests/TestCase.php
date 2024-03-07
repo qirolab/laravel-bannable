@@ -143,6 +143,7 @@ abstract class TestCase extends Orchestra
     public function createBan($attributes = [], $amount = null)
     {
         $bannable = $this->createUser(User::class);
+
         // dd(array_merge(
         //     [
         //         'bannable_id' => $bannable->getKey(),
