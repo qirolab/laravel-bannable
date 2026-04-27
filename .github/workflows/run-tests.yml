@@ -17,14 +17,13 @@ jobs:
 
       matrix:
         os: [ubuntu-latest]
-        php: [8.2, 8.3, 8.4]
+        php: ['8.2', '8.3', '8.4']
         laravel: ['11.*', '12.*', '13.*']
-        stability: [prefer-lowest, prefer-stable]
+        stability: [prefer-stable]
 
         exclude:
-          # Laravel 13 requires PHP 8.3+
           - laravel: '13.*'
-            php: 8.2
+            php: '8.2'
 
         include:
           - laravel: '11.*'
@@ -57,26 +56,23 @@ jobs:
           echo "::add-matcher::${{ runner.tool_cache }}/php.json"
           echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
+      - name: Validate composer.json
+        run: composer validate --strict --no-check-lock
+
       - name: Install dependencies
         run: |
-          TESTBENCH_VERSION="${{ matrix.testbench }}"
-
-          # Testbench 9.0.x falls too low for the Laravel 11 prefer-lowest lane
-          # and breaks before the test suite boots.
-          if [ "${{ matrix.laravel }}" = "11.*" ] && [ "${{ matrix.stability }}" = "prefer-lowest" ]; then
-            TESTBENCH_VERSION="^9.12"
-          fi
-
           composer require \
             "laravel/framework:${{ matrix.laravel }}" \
-            "orchestra/testbench:${TESTBENCH_VERSION}" \
+            "orchestra/testbench:${{ matrix.testbench }}" \
+            --dev \
             --no-interaction \
             --no-update
 
           composer update \
             --${{ matrix.stability }} \
             --prefer-dist \
-            --no-interaction
+            --no-interaction \
+            -W
 
       - name: Execute tests
         run: vendor/bin/phpunit
