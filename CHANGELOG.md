@@ -5,6 +5,7 @@ All notable changes to `laravel-bannable` will be documented in this file
 ## 3.3.0 - 2026-04-28
 
 - Laravel 13.x support
+- Drop support for Laravel 8.x, 9.x, 10.x
 
 ## 3.2.0 - 2025-02-26
 

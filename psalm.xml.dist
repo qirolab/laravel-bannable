@@ -13,4 +13,40 @@
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
+    <issueHandlers>
+        <MissingOverrideAttribute errorLevel="suppress" />
+        <UnusedClass>
+            <errorLevel type="suppress">
+                <file name="src/BannableServiceProvider.php" />
+                <file name="src/Middleware/ForbidBannedUser.php" />
+            </errorLevel>
+        </UnusedClass>
+        <PossiblyUnusedProperty>
+            <errorLevel type="suppress">
+                <directory name="src/Events" />
+            </errorLevel>
+        </PossiblyUnusedProperty>
+        <PossiblyUnusedMethod>
+            <errorLevel type="suppress">
+                <directory name="src/Models" />
+                <directory name="src/Observers" />
+                <directory name="src/Scopes" />
+            </errorLevel>
+        </PossiblyUnusedMethod>
+        <UndefinedMagicMethod>
+            <errorLevel type="suppress">
+                <file name="src/Models/Ban.php" />
+            </errorLevel>
+        </UndefinedMagicMethod>
+        <UndefinedInterfaceMethod>
+            <errorLevel type="suppress">
+                <file name="src/Observers/BanObserver.php" />
+            </errorLevel>
+        </UndefinedInterfaceMethod>
+        <UndefinedMagicPropertyFetch>
+            <errorLevel type="suppress">
+                <file name="src/Observers/BanObserver.php" />
+            </errorLevel>
+        </UndefinedMagicPropertyFetch>
+    </issueHandlers>
 </psalm>
