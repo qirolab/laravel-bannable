@@ -13,75 +13,16 @@ jobs:
 
       matrix:
         os: [ubuntu-latest]
-        php: [7.3, 7.4, 8.0, 8.1, 8.2, 8.3, 8.4]
-        laravel: ['8.*', '9.*', '10.*', '11.*', '12.*', '13.*']
+        php: [8.2, 8.3, 8.4]
+        laravel: ['11.*', '12.*', '13.*']
         stability: [prefer-lowest, prefer-stable]
 
         exclude:
-          # prefer-lowest exclusions
-          - laravel: '8.*'
-            stability: prefer-lowest
-          - laravel: '9.*'
-            stability: prefer-lowest
-          - laravel: '10.*'
-            stability: prefer-lowest
-
-          # Laravel 9 requires PHP 8+
-          - laravel: '9.*'
-            php: 7.3
-          - laravel: '9.*'
-            php: 7.4
-
-          # Laravel 10 requires PHP 8.1+
-          - laravel: '10.*'
-            php: 7.3
-          - laravel: '10.*'
-            php: 7.4
-          - laravel: '10.*'
-            php: 8.0
-
-          # Laravel 11 requires PHP 8.2+
-          - laravel: '11.*'
-            php: 7.3
-          - laravel: '11.*'
-            php: 7.4
-          - laravel: '11.*'
-            php: 8.0
-          - laravel: '11.*'
-            php: 8.1
-
-          # Laravel 12 requires PHP 8.2+
-          - laravel: '12.*'
-            php: 7.3
-          - laravel: '12.*'
-            php: 7.4
-          - laravel: '12.*'
-            php: 8.0
-          - laravel: '12.*'
-            php: 8.1
-
           # Laravel 13 requires PHP 8.3+
-          - laravel: '13.*'
-            php: 7.3
-          - laravel: '13.*'
-            php: 7.4
-          - laravel: '13.*'
-            php: 8.0
-          - laravel: '13.*'
-            php: 8.1
           - laravel: '13.*'
             php: 8.2
 
         include:
-          - laravel: '8.*'
-            testbench: '6.*'
-
-          - laravel: '9.*'
-            testbench: '7.*'
-
-          - laravel: '10.*'
-            testbench: '8.*'
-
           - laravel: '11.*'
             testbench: '9.*'
 
